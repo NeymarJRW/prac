@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+  }
+
+  body {
+    background-image: url("./img/start/背景.png");
+    background-size: 100% 100%;
+    position: relative;
+  }
+
+  .title {
+    width: 30rem;
+    height: 16rem;
+    background-image: url("./img/start/名字.png");
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    top: 1%;
+    transform: translate(-50%, 0);
+  }
+
+  .girls {
+    width: 34rem;
+    height: 37rem;
+    background-image: url("./img/start/人物.png");
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, 0);
+  }
+
+  .start {
+    width: 12rem;
+    height: 3.5rem;
+    background-image: url("./img/start/开始键.png");
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translate(-50%, 0);
+  }
+
+  .loadingGirl {
+    width: 35rem;
+    height: 21em;
+    background-image: url("./img/loading/人物.png");
+    background-size: 100% 100%;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, 0);
+  }
+
+  .loadingGirl .loading {
+    width: 27rem;
+    height: 1.5rem;
+    background-image: url("./img/loading/进度条底.png");
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .loadingGirl .loading img {
+    width: 0%;
+    height: 50%;
+  }
+
+  .loadingGirl .info {
+    width: 12rem;
+    height: 1.5rem;
+    background-image: url("./img/loading/Loading......png");
+    background-size: 100% 100%;
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+  }
+
+  .error {
+    width: 30rem;
+    height: 10rem;
+    background: #000;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
+<body>
+  <div class="title"></div>
+  <div class="girls"></div>
+  <div class="start"></div>
+  <div class="loadingGirl">
+    <div class="loading">
+      <img src="./img/loading/进度条.png" alt="">
+    </div>
+    <div class="info">
+    </div>
+  </div>
+  <div class="error">
+    Configuration error!
+  </div>
+
+
+  <script>
+    var doc = document.querySelector.bind(document);
+    function REM() {
+      var der = document.documentElement.clientWidth / 375;
+      document.documentElement.style.fontSize = der * 10 + 'px';
+    };
+
+    REM();
+    window.onresize = function () {
+      REM();
+    }
+    var title = doc(".title");
+    var girls = doc(".girls");
+    var start = doc(".start");
+    var loadingGirl = doc(".loadingGirl");
+    var loading = doc(".loadingGirl .loading img");
+    var error = doc(".error");
+    loadingGirl.style.display = "none";
+    error.style.display = "none";
+
+    start.onclick = function () {
+      title.style.display = "none";
+      girls.style.display = "none";
+      start.style.display = "none";
+      loadingGirl.style.display = "block";
+      // loading.style.width="50%";
+      let num = 0;
+      var timer = setInterval(() => {
+        num += 0.5;
+        loading.style.width = `${num}%`;
+        if (num >= 100) {
+          clearInterval(timer);
+          error.style.display = "flex";
+        }
+      }, 100)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

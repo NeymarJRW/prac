@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+<body>
+  <div id="app">
+    <img :src="url" alt="">
+    <p>{{msg}}</p>
+    <p>{{mydata}}</p>
+    <input type="button" value="点击" @click="msg=!msg">
+    <input type="text" v-model="msg">
+
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          url: "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3622794939,2982562634&fm=11&gp=0.jpg",
+          msg: true,
+        }
+
+      },
+      mounted() {
+      },
+      computed: {
+        mydata() {
+          // console.log("执行了");
+          // return this.msg.split("").reverse().join("");
+        }
+      },
+      created() {
+        // this.getInfo()
+      },
+      methods: {
+        getdata() {
+          console.log(this)
+        },
+      }
+    })
+    // console.log(new Vue().msg)
+
+  </script>
+</body>
+
+</html>

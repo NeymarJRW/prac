@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  body,html{
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    
+  }
+  body{
+    position: relative;
+    background-image: url("./img/bg.jpg");
+    background-size: 100% 100%;
+  }
+  .btn{
+    width: 15.5rem;
+    height: 4rem;
+    /* background: green; */
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%,0);
+    cursor: pointer;
+  }
+  .btn img{
+    width: 100%;
+  }
+  .tip{
+    width: 25rem;
+    height: 10rem;
+    background: #000;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<body>
+
+  <div class="btn">
+    <img src="./img/start.png" alt="">
+  </div>
+  <div class="tip">
+    Game configuration error!
+  </div>
+
+  <script>
+    var doc=document.querySelector.bind(document);
+      var der = document.documentElement.clientWidth / 375;
+        document.documentElement.style.fontSize = der * 10 + 'px';
+        window.onresize = function () {
+          var der = document.documentElement.clientWidth / 375;
+          document.documentElement.style.fontSize = der * 10 + 'px';
+        }
+        var tip= doc('.tip');
+        tip.style.display="none";
+        var btn=doc(".btn");
+        btn.onclick=function(){
+          tip.style.display = "flex";
+        }
+
+  </script>
+</body>
+</html>

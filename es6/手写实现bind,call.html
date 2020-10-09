@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 主要原理是通过函数传参共享传递, 把当前要绑定this的对象传入函数中, 将函数方法添加为绑定对象新的属性, 然后执行, 执行完毕后使用delete删除该属性
+
+    var obj = {
+      a: "这是obj"
+    }
+    function fn(name, age) {
+      console.log(name);
+      console.log(age);
+      console.log(this.a)
+      return {
+        data: this.a
+      }
+    }
+
+
+    Function.prototype.call2 = function (context, ...arg) {
+      context = context instanceof Object ? context : window;
+      context.fn = this;
+      var result = context.fn(...arg);
+      delete context.fn;
+      return result;
+    }
+    console.log(fn.call2(obj, "huahau", 16))
+    Function.prototype.bind2 = function (context) {
+      var context = context;
+      var _this = this;
+      return function (...arg) {
+        context = context instanceof Object ? context : window;
+        context.fn = _this;
+        var result = context.fn(...arg)
+        delete context.fn;
+        return result;
+
+      }
+    }
+
+  </script>
+</body>
+
+</html>

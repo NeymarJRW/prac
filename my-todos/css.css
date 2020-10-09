@@ -1,0 +1,169 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  background: #dcdcdc;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todos {
+  background: #fff;
+  width: 300px;
+  /* height: 500px; */
+  min-height: 300px;
+  margin: 40px auto;
+  box-shadow: 0px 0px 5px #333;
+  transition: all 0.3s;
+  padding: 20px 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+.todos .toptitle{
+  text-align: center;
+  font-size: 30px;
+
+}
+.todos:hover {
+  box-shadow: 0px 0px 15px #333;
+}
+
+.top .inp {
+  width: 85%;
+  height: 30px;
+  margin: 10px 7%;
+  margin-bottom: 5px;
+  padding-left: 10px;
+  font-size: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: 0;
+  transition: all 0.2s;
+}
+.top p{
+  font-size: 12px;
+}
+
+.top .inp:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075),
+    0 0 8px rgba(102, 175, 233, .6)
+}
+
+.select {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: #FFFAFA;
+  border: 1px solid #ccc;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+.select_item{
+  background: #333;
+
+} 
+.select:hover {
+  border: 1px solid #333;
+}
+
+.top p {
+  margin-left: 7%;
+  margin-bottom: 20px;
+}
+
+.center ul {
+  list-style: none;
+  margin: 10px 0 20px 7%;
+  width: 85%;
+}
+
+.center ul li {
+  width: 90%;
+  margin: 10px 0;
+}
+
+.center ul li p {
+  display: inline-block
+}
+
+.center ul li .selected_item {
+  text-decoration: line-through;
+}
+
+.center ul li .clickinp {
+  display: none;
+  width: 100%;
+  height: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: 0;
+  transition: all 0.2s;
+}
+
+.center ul li .clickinp:focus {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075),
+    0 0 8px rgba(102, 175, 233, .6)
+}
+.center ul li .delcurrent{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: #ccc;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 100%;
+  opacity: 0;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.center ul li:hover .delcurrent {
+  opacity: 1;
+
+}
+.footer .del_item {
+  margin-left: 7%;
+  height: 25px;
+  display: inline-block;
+}
+
+.footer .dellogo {
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.footer .dellogo:hover {
+  transform: scale(1.5)
+}
+.footer .del_selected{
+  margin-top: 5px;
+  margin-left: 7%;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="top">
+    客服咨询
+    <img src="./img/phone.png" alt="">
+  </div>
+  <div class="center">
+    <div class="tip">
+      <p>进入官网<a href="www.915.com">www.915.com</a>查看有关游戏内容</p>
+      <p>关注微信公众号【915手游】【915游戏】 领取豪华大礼包!~ </p>
+      <p>若您需要长时间的咨询游戏问题,可关注我们的QQ公众号: <span style="color:blue">4000666915</span> 。</p>
+    </div>
+    <div class="phoneinfo">
+      电话咨询
+    </div>
+    <div class="zixun">
+      <img src="./img/head_logo.png" alt="">
+      <div class="zixuncontent">
+        欢迎您的咨询,期待为您服务!
+      </div>
+    </div>
+    <!-- <div class="myword">
+      <div class="content">
+        你好你好你好
+      </div>
+      <img src="./img/my_logo.png" alt="">
+    </div> -->
+  </div>
+  <div class="footer">
+     <div class="shuru">
+        <img src="./img/smlie.png" alt="">
+        <input class="input" type="text" placeholder="请输入...">
+        <p class="send">发送</p>
+     </div>
+
+     祝您游戏愉快~
+  </div>
+
+</body>
+<script>
+  var input=document.querySelector('.input');
+  var oP=document.querySelector('.send');
+  var center=document.querySelector('.center')
+  var str='';
+  oP.onclick=function(){
+      str=input.value;
+      var htmlstr=` <div class="content">${str}</div><img src="./img/my_logo.png" alt="">`;
+      var newnode=document.createElement('div');
+      newnode.className='myword',
+      newnode.innerHTML=htmlstr;
+      center.appendChild(newnode)
+      input.value=''
+  }
+</script>
+
+</html>

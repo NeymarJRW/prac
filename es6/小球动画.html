@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+    background: AliceBlue;
+  }
+
+  body .box {
+    width: 100px;
+    height: 100px;
+    background: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+
+</body>
+<script>
+
+  var W = document.body.clientWidth;
+  var H = document.body.clientHeight;
+  var colors = ["black", "red", "green", "pink", "yellow", "blue", "purple", "grey", "orange"];
+  var boxNumber = 300;//方块数量
+
+  document.body.innerHTML = [...new Array(boxNumber).keys()].reduce((p, c, i) => p += `<div class="box${i} box"> ${i + 1} </div>`, "");
+  [...document.querySelectorAll(".box")].forEach(i => {
+    getBoxAni(
+      `.${i.className.split(" ")[0]}`,
+      Math.floor(Math.random() * (W - 110)),
+      Math.floor(Math.random() * (H - 110)),
+      5 + Math.floor(Math.random() * 5),
+      colors[Math.floor(Math.random() * colors.length)])
+  });
+
+  //el:元素 left:左边距 top:上边距 speed:速度 color:方块颜色
+  function getBoxAni(el, left, top, speed, color) {
+    var box = document.querySelector(el);
+    box.style.background = color;
+    var x = top, y = left;
+    var box_W = box.clientWidth, box_H = box.clientHeight;
+    var speed_x = speed, speed_y = speed;
+    window.requestAnimationFrame(animation)
+    function animation() {
+      x < 0 || x > (H - box_H - 10) ? speed_x = -speed_x : "";//碰到上下
+      y < 0 || y > (W - box_W - 10) ? speed_y = -speed_y : ""; // 碰到左右
+      x += speed_x;
+      y += speed_y;
+      box.style.left = y + 'px';
+      box.style.top = x + 'px';
+      window.requestAnimationFrame(animation);
+    }
+  }
+
+
+</script>
+
+</html>

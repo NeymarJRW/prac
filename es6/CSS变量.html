@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  :root {
+    --bgColor: red;
+  }
+
+  p {
+    color: var(--bgColor);
+  }
+</style>
+
+<body>
+  <p>hello world</p>
+  <script>
+    // Js
+    if (window.CSS && window.CSS.supports && window.CSS.supports('--a', 0)) {
+      alert('CSS properties are supported');
+    } else {
+      alert('CSS properties are NOT supported');
+    }
+
+  </script>
+</body>
+
+</html>

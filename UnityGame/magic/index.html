@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Magic Legendary Card</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    body {
+      background: url("./img/bg.png");
+      background-size: 100% 100%;
+    }
+
+    .loading {
+      width: 25rem;
+      height: 3rem;
+      background: url("./img/loading-bor.png");
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding-left: 1.5rem;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
+
+    .loading img {
+      height: 1.5rem;
+      width: 0%;
+      width: 0rem;
+      transform: translateY(-5%);
+    }
+
+    .start {
+      width: 11.5rem;
+      height: 4rem;
+      background: url("./img/button.png");
+      background-size: 100% 100%;
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .tip {
+      width: 22rem;
+      height: 6rem;
+      background: black;
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <img src="./img/loading.png" alt="">
+  </div>
+  <div class="start">
+  </div>
+  <div class="tip">
+    Game configuration error!
+  </div>
+</body>
+<script>
+
+  var der = document.documentElement.clientWidth / 375;
+  document.documentElement.style.fontSize = der * 10 + 'px';
+  window.onresize = function () {
+    var der = document.documentElement.clientWidth / 375;
+    document.documentElement.style.fontSize = der * 10 + 'px';
+  }
+  
+  var tip = document.querySelector(".tip");
+  tip.style.display = "none"
+  function myclick() {
+    var num = 0;
+    var timer = setInterval(() => {
+      num += 1.5;
+      if (num >= 92) {
+        clearInterval(timer)
+        setTimeout(() => {
+          tip.style.display = "flex"
+        }, 500);
+      }
+      document.querySelector(".loading img").style.width = num + '%'
+    }, 50)
+    document.querySelector(".start").removeEventListener("click", myclick)
+  }
+  document.querySelector(".start").addEventListener("click", myclick)
+
+</script>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  ul {
+    margin: 0 auto;
+    list-style: none;
+    width: 50%;
+  }
+
+  ul li {
+    padding: 0 10px;
+    background: gray;
+    margin-bottom: 5px;
+    color: aliceblue;
+  }
+
+  ul li span {
+    color: black;
+    float: right;
+    cursor: pointer;
+    display: none;
+  }
+
+  ul li:hover span {
+    display: inline;
+
+  }
+</style>
+
+<body>
+  <input class="btn" type="button" value="添加">
+  <input class="reset" type="button" value="重置">
+  <ul class="list">
+    <li>A <span>X</span></li>
+  </ul>
+  <script>
+    var subjectList = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
+    var subjectIndex = 4;//当前展示前四个
+    var ul = document.querySelector(".list");
+
+    //渲染前四个选项按钮
+    ul.innerHTML = subjectList.slice(0, subjectIndex).reduce((pre, cur) => pre + `<li>${cur} <span>X</spann></li>`, "");
+
+    //初始化点击事件
+    liAddClickListener();
+
+    //添加按钮事件
+    document.querySelector(".btn").addEventListener("click", () => {
+      subjectIndex++;
+      if (subjectIndex >= subjectList.length) {
+        alert("长度已达上限");
+        subjectIndex = subjectList.length;
+      } else {
+        // ul.innerHTML += `<li>${subjectList[subjectIndex]} <span>X</spann></li>`;
+        var _li = document.createElement("li");
+        _li.innerHTML = `${subjectList[subjectIndex]} <span>X</spann>`;
+        ul.appendChild(_li)
+
+        liAddClickListener();//刷新点击事件
+      }
+    })
+
+    //重置按钮事件
+    document.querySelector(".reset").addEventListener("click", () => {
+      subjectIndex = 4;
+      ul.innerHTML = subjectList.slice(0, subjectIndex).reduce((pre, cur) => pre + `<li>${cur} <span>X</spann></li>`, "");
+    })
+
+    //每个li右边的关闭按钮添加事件
+    function liAddClickListener() {
+      var lis = ul.querySelectorAll("li");
+      [...lis].map(i => {
+        i.querySelector("span").addEventListener("click", (e) => {
+          //移动当前元素
+          e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+        })
+      })
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    background: pink;
+
+  }
+</style>
+
+<body>
+  <a href="#/hash1">hash1</a>
+  <a href="#/hash2">hash2</a>
+  <a href="#/hash3">hash3</a>
+  <a href="#/hash4">hash4</a>
+  <p class="result">路由名称</p>
+  <script>
+    var $ = document.querySelector.bind(document);
+
+    // window.addEventListener("hashchange")
+    function router() {
+      this.routers = {};
+      this.curUrl = "";
+      this.routes = function (path, callback) {
+        this.routers[path] = callback || function () { };
+      }
+      this.refersh = function () {
+        if (location.hash.length != 0) {
+          //hash存在
+          this.curUrl = location.hash.slice(1) || "/";
+          if (this.curUrl.indexOf("/") > -1 && this.curUrl in this.routers) {
+            this.routers[this.curUrl]();
+          }
+        }
+      }
+      this.init = function () {
+        window.addEventListener("load", this.refersh.bind(this))
+        window.addEventListener("hashchange", this.refersh.bind(this));
+      }
+    }
+    var Router = new router();
+    Router.init();
+    Router.routes("/hash1", () => {
+      $(".result").innerHTML = "/hash1";
+    });
+    Router.routes("/hash2", () => {
+      $(".result").innerHTML = "/hash2";
+    });
+    Router.routes("/hash3", () => {
+      $(".result").innerHTML = "/hash3";
+    });
+    Router.routes("/hash4", () => {
+      $(".result").innerHTML = "/hash4";
+    });
+    console.log(window.history.__proto__.constructor)
+  </script>
+</body>
+
+</html>

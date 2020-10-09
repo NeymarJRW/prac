@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+  <div class="box">
+
+  </div>
+
+  <script>
+    //倒计时(分钟)
+    var box = document.querySelector(".box");
+    var allTime = 60 * 1 + 20;
+    var timer = setInterval(() => {
+      getTime(allTime);
+      allTime--;
+    }, 1000);
+    function getTime(t) {
+      if (t <= 0) {
+        box.innerHTML = "倒计时结束!";
+        clearInterval(timer);
+        return;
+      }
+      box.innerHTML = `${Math.floor(t / 60) >= 10 ? Math.floor(t / 60) : "0" + Math.floor(t / 60)} : ${t % 60 >= 10 ? t % 60 : "0" + t % 60}`
+    }
+
+  </script>
+</body>
+
+</html>

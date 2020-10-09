@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body>
+
+</body>
+<script>
+    var arr = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM:/.".split('');
+    // var url = "http://baodong.2a3a.com/jrw/".split('');
+    // var url = "http://baodong.2a3a.com/jrw/".split('');
+    // var url = "http://bluegame.2a3a.com/jrw/".split('');
+    // var url="http://dream.2a3a.com/sky/".split('');
+    // var url="http://thewar.2a3a.com/sky/".split('');
+    // var url="http://beacon.2a3a.com/sky/".split('');
+    // var url="http://worldwar.2a3a.com/sky/".split('');
+    // var url="http://times.2a3a.com/jrw/".split('');
+    // var url = "http://heroes.2a3a.com/jrw/".split('');
+    // var url = "http://endless.2a3a.com/sanguo/".split('');
+    var url = "http://cardwar.2a3a.com/jrw/".split('');
+    var pinjie = '';
+    var c = '%c';
+    url.map(item => {
+        pinjie += `mystr[${arr.indexOf(item)}],`
+    })
+    console.log(pinjie)
+    console.log(c.repeat(url.length))
+    // 卡牌,魔法,冒险,英雄,热血,战斗,传奇,屠龙,复古,策略,魔幻,武侠,至尊,散人,手游,盛世龙城,回合
+</script>
+
+</html>

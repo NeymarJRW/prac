@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .main {
+    width: 100%;
+  }
+</style>
+
+<body>
+  <div class="main">
+
+  </div>
+
+  <script>
+    // let imgSrc = [
+    //   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574761475808&di=e990aae194e6c06bde246a7fd294cf65&imgtype=0&src=http%3A%2F%2Fi1.sinaimg.cn%2Fent%2Fd%2F2008-06-04%2FU105P28T3D2048907F326DT20080604225106.jpg',
+    //   'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574761500280&di=b4353ece9c319171ca5682bc5a01ca2d&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201303%2F28%2F20130328121141_REKaF.jpeg',
+    //   'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1290818963,1280501057&fm=26&gp=0.jpg'
+    // ]
+    // function loadImg(src) {
+    //   let p = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       let img = document.createElement("img");
+    //       img.width = 200;
+    //       img.src = src;
+    //       document.querySelector(".main").appendChild(img)
+    //       resolve();
+    //     }, 1500)
+    //   })
+    //   return p;
+    // }
+    // loadImg(imgSrc[0])
+    //   .then(res => {
+    //     console.log("加载第一张")
+    //     return loadImg(imgSrc[1]);
+    //   })
+    //   .then(res => {
+    //     console.log("加载第二张")
+    //     return loadImg(imgSrc[2]);
+    //   })
+    //   .then(res => {
+    //     console.log("加载第三张")
+
+    //   })
+    // for (var i = 0; i < 10; i++) {
+    //   setTimeout((i) => {
+    //     console.log(i);
+    //   }, 1000,i)
+    // }
+    // let i = 1;
+    // let h = 0.01;
+    // while (true) {
+    //   h = h * 2;
+    //   console.log(h)
+    //   console.log("第" + i + "次")
+    //   if (h > 8848) {
+    //     console.log(i)
+    //     break;
+    //   }
+    //   i++;
+    // }
+    // console.log(i)
+    // var height = 884800000;
+    //   var zhi = 7;
+    //   var count = 0;
+    //   while (true) {
+    //     zhi *= 2;
+    //     count++;
+    //     if (zhi > height) {
+    //       document.write(count + '次');
+    //       break;
+    //     }
+    //   }
+    var BOOK = {
+      name: [
+        "明天下",
+        "第一序列",
+        "九星毒奶",
+        "大明王冠",
+        "凡人修仙",
+        "诡秘之王",
+        "问道红尘",
+        "弑神世界",
+        "手术直播间",
+        "灵气逼人",
+        "黎明之剑",
+        "帝国猛将",
+        "大美时代",
+        "全球农王",
+        "三国演义",
+        "水浒传",
+        "西游记",
+        "红楼梦",
+        "假如给我三天光明",
+        "鲁滨孙漂流记",
+      ],
+      type: [
+        "玄幻", "奇幻", "武侠", "仙侠", "都市", "现实", "军事", "历史", "科幻", "悬疑"
+      ],
+      price: [9.9, 19.9, 29.9, 39.9, 49.9, 59.9],
+      number: [100, 200, 300, 400, 500],
+      language: ['中文', "英文", "日语", "韩语"],
+      status: ["已上架", "未上架"]
+    }
+
+    function getdata(num) {
+      var obj = [];
+      for (let i = 0; i < num; i++) {
+        var name = BOOK.name[getIndex(BOOK.name.length)];
+        var flag = obj.every(item => item.name != name)
+        if (flag) {
+          obj.push({
+            id: 1001 + i,
+            name: name,
+            type: BOOK.type[getIndex(BOOK.type.length)],
+            price: BOOK.price[getIndex(BOOK.price.length)],
+            number: BOOK.number[getIndex(BOOK.number.length)],
+            language: BOOK.language[getIndex(BOOK.language.length)],
+            status: BOOK.status[getIndex(BOOK.status.length)],
+          })
+        } else {
+          i--;
+        }
+
+      }
+      return obj;
+    }
+
+    document.write(JSON.stringify(getdata(20)));
+    function getIndex(len) {
+      return Math.floor(Math.random() * len)
+    }
+
+
+
+  </script>
+</body>
+
+</html>

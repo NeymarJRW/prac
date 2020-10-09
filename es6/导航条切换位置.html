@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body,
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+
+    box-sizing: border-box;
+  }
+
+  .main {
+    width: 60%;
+    height: 50px;
+    /* background: #333; */
+    margin: 0px auto;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .left {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-right: 50px solid #333;
+    border-bottom: 25px solid transparent;
+    cursor: pointer;
+  }
+
+  .right {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 50px solid #333;
+    border-bottom: 25px solid transparent;
+    cursor: pointer;
+  }
+
+  .main ul {
+    background: #333;
+
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: all 0.2s;
+    color: #fff;
+  }
+
+  .main ul li {
+    float: left;
+    width: 20%;
+    height: 100%;
+    /* background: #ddd; */
+    box-sizing: border-box;
+    /* border: 5px solid #444; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .main ul li.active {
+    /* background: blue; */
+    color: #fff;
+    font-size: 30px;
+  }
+</style>
+
+<body>
+  <div class="main">
+    <!-- <ul>
+      <li class="active">语文</li>
+      <li>数学</li>
+      <li>物理</li>
+      <li>化学</li>
+      <li>生物</li>
+    </ul> -->
+  </div>
+  <div class="left"></div>
+
+  <div class="right"></div>
+  <script>
+
+    var subjectList = ["语文", "数学", "物理", "化学", "生物", "化学", "生物"];
+    var doc = document.querySelector.bind(document);
+    var docAll = document.querySelectorAll.bind(document);
+    function getList(arr) {
+      arr = arr || [];
+      var main = doc(".main");//主容器
+      var leftArrow = doc(".left");//左箭头
+      var rightArrow = doc(".right");//右箭头
+      main.innerHTML = "<ul>" + getLis(arr) + "</ul>";
+      var ul = doc(".main ul");
+      var allLi = docAll(".main ul li");//所有li选项;
+      var activeIndex = Math.floor(allLi.length / 2);//当前选中索引
+      console.log(activeIndex)
+      for (var i = 0; i < allLi.length; i++) {
+        allLi[i].style.width = Math.floor(100 / allLi.length) + "%";
+      }
+      var liWidth = allLi[0].offsetWidth;
+      var centerPosition = Math.floor(main.offsetWidth / 2) - Math.floor(liWidth / 2);
+      //移动到中心位置
+      ul.style.left = centerPosition - liWidth * activeIndex + "px";
+      allLi[activeIndex].classList.add("active");
+
+      rightArrow.addEventListener("click", () => {
+        activeIndex++;
+        if (activeIndex > allLi.length - 1) activeIndex = allLi.length - 1;
+        for (var i = 0; i < allLi.length; i++) {
+          allLi[i].classList.remove("active");
+        }
+        allLi[activeIndex].classList.add("active");
+        ul.style.left = centerPosition - liWidth * activeIndex + "px";
+      })
+      leftArrow.addEventListener("click", () => {
+        activeIndex--;
+        if (activeIndex < 0) activeIndex = 0;
+        for (var i = 0; i < allLi.length; i++) {
+          allLi[i].classList.remove("active");
+        }
+        allLi[activeIndex].classList.add("active");
+        ul.style.left = centerPosition - liWidth * activeIndex + "px";
+      })
+    }
+    // function getList(arr) {
+    //   arr = arr || [];
+    //   var main = doc(".main");//主容器
+    //   var leftArrow = doc(".left");//左箭头
+    //   var rightArrow = doc(".right");//右箭头
+    //   var activeIndex = 0;//当前选中索引
+    //   main.innerHTML = "<ul>" + getLis(arr) + "</ul>";
+
+    //   var allLi = docAll(".main ul li");//所有li选项;
+    //   for (var i = 0; i < allLi.length; i++) {
+    //     allLi[i].style.width = Math.floor(100 / allLi.length) + "%";
+    //   }
+    //   allLi[activeIndex].classList.add("active");
+    //   rightArrow.addEventListener("click", function () {
+    //     for (var i = 0; i < allLi.length; i++) {
+    //       allLi[i].classList.remove("active");
+    //     }
+    //     activeIndex++;
+    //     if (activeIndex > allLi.length - 1)
+    //       activeIndex = allLi.length - 1;
+
+    //     allLi[activeIndex].classList.add("active");
+    //     console.log(activeIndex)
+
+    //   })
+    //   leftArrow.addEventListener("click", () => {
+    //     for (var i = 0; i < allLi.length; i++) {
+    //       allLi[i].classList.remove("active");
+    //     }
+    //     activeIndex--;
+    //     if (activeIndex < 0)
+    //       activeIndex = 0;
+
+    //     allLi[activeIndex].classList.add("active");
+    //     console.log(activeIndex)
+    //   })
+    // }
+
+
+    //渲染获得所有li列表
+    function getLis(list) {
+      var str = "";
+      if (list && list.length > 0) {
+        for (var i = 0; i < list.length; i++) {
+          str += "<li>" + list[i] + "</li>";
+        }
+      }
+      return str;
+    }
+
+    getList(subjectList);
+  </script>
+</body>
+
+</html>
