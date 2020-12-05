@@ -157,10 +157,7 @@
 
       //遍历预览图片
       function getViewImgs(imgArr) {
-        imglist.innerHTML = imgArr.reduce((p, c) => {
-          return p + `<img src="${c}">`
-        }, "")
-
+        imglist.innerHTML = imgArr.reduce((p, c) => p + `<img src="${c}">`,"")
       }
     </script>
   </body>
