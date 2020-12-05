@@ -101,10 +101,7 @@
 
 
   <body>
-    <script src="./moudle/1.js" type="module"></script>
     <script>
-      // console.log(a);
-      // console.log();
       const doc = document.querySelector.bind(document);
       const docAll = document.querySelectorAll.bind(document);
       const file = doc("#file");//input file文件
@@ -112,7 +109,6 @@
       const imglist = doc(".imglist");//图片预览盒子
       var imgNameList = [];//上传图片列表
       var viewImgs = [];//预览图片数组
-      // JSON.parse
 
       //上传图片时触发
       file.onchange = (e) => {
@@ -122,7 +118,6 @@
           var render = new FileReader;
           render.readAsDataURL(e.target.files[0]);
           render.onload = function () {
-            console.log("222222222222222")
             addNameList(e.target.files[0].name)
             imgNameList.push(this.result)
             getViewImgs(imgNameList);
